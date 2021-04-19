@@ -1,5 +1,5 @@
 # Initialization
-source("DMA_Init.R")
+source("DMG_Init.R")
 Datapath = "Data/LimeSurveyQuestionnaires/Raw/"
 Output_path = "Data/LimeSurveyQuestionnaires/Processed/"
 
@@ -9,16 +9,16 @@ dLS2 <- read.csv(paste0(Datapath, "ResultLS2.csv"), encoding="UTF-8")
 
 # Rename and select columns
 colnames(dLS2)[1] <- "NS"
+TestMail <- c("test", "test ", "Test", "TEST", "TEST ", "TEST 2", "TEST3", "test 3", "testbis", "de",
+              "https://survey.ulb.ac.be/survey3/index.php/388295")
+
 dLS2 <- dLS2 %>%
   filter(lastpage == 1)%>% # Remove unfinished
-  filter(E1 != "test")%>%
-  filter(E1 != "Test")%>%
-  filter(E1 != "TEST")%>%
-  filter(E1 != "noemie.bonjean@ulb.be")
+  filter(!E1 %in% TestMail)
 
 # Main df
 dLS2 <- dLS2%>%
-  select(NS, Mail2 = E1, LastDrink2 = Al1, LastDrinkQuantity = Al2)
+  select(NS, Mail2 = E1, LastSession2 = Ga1, LastSessionDuration = Ga2)
 
 # Remove duplicates
 dLS2 = dLS2[order(dLS2[,'Mail2'],-dLS2[,'NS']),]
@@ -34,15 +34,15 @@ for (i in c(1:length(dLS2$Mail2))) {
 
 ########## Columns handling
 # Last Drink
-dLS2$LastDrink2[dLS2$LastDrink2 == "Al11"] <- "Today"
-dLS2$LastDrink2[dLS2$LastDrink2 == "Al12"] <- "AfterS1"
-dLS2$LastDrink2[dLS2$LastDrink2 == "Al13"] <- "BeforeS1"
-dLS2$LastDrink2[dLS2$LastDrink2 == "Al14"] <- "Earlier"
+dLS2$LastSession2[dLS2$LastSession2 == "Ga11"] <- "Today"
+dLS2$LastSession2[dLS2$LastSession2 == "Ga12"] <- "AfterS1"
+dLS2$LastSession2[dLS2$LastSession2 == "Ga13"] <- "BeforeS1"
+dLS2$LastSession2[dLS2$LastSession2 == "Ga14"] <- "Earlier"
 
-dLS2$LastDrink2 <- factor(dLS2$LastDrink2, levels = c("Earlier", "BeforeS1", "AfterS2", "Today"), ordered = T)
+dLS2$LastSession2 <- factor(dLS2$LastSession2, levels = c("Earlier", "BeforeS1", "AfterS2", "Today"), ordered = T)
 
 ########## Final Frames
-dF <- select(dLS2, NS, Mail2, LastDrink2, LastDrinkQuantity)
+dF <- select(dLS2, NS, Mail2, LastSession2, LastSessionDuration)
 dMailLS2 <- select(dLS2, Mail2)
 
 ########## Export
