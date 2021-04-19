@@ -9,7 +9,8 @@ dLS1 <- read.csv(paste0(Datapath, "ResultLS1.csv"), encoding="UTF-8")
 
 # Rename and select columns
 colnames(dLS1)[1] <- "NS"
-TestMail <- c("test", "test ", "Test", "TEST", "TEST ", "TEST 2", "TEST3", "test 3", "testbis", "de")
+TestMail <- c("test", "test ", "Test", "TEST", "TEST ", "TEST 2", "TEST3", "test 3", "testbis", "de",
+              "https://survey.ulb.ac.be/survey3/index.php/388295")
 
 dLS1 <- dLS1 %>%
   filter(lastpage == 4)%>% # Remove unfinished
@@ -18,7 +19,7 @@ dLS1 <- dLS1 %>%
 
 # Main df
 dLS1 <- select(dLS1, NS, Mail1 = E1, Age = IP01, Gender = IP02, StudyLvl = IP03, Work = IP06, Contactable = IP04, DrugUse = IP05,
-               Gambling = ICJE0, ICJE1 = ICJE.ICJE01., ICJE2 = ICJE.ICJE02., ICJE3 = ICJE.ICJE03., ICJE4 = ICJE.ICJE04.,
+               ICJE1 = ICJE.ICJE01., ICJE2 = ICJE.ICJE02., ICJE3 = ICJE.ICJE03., ICJE4 = ICJE.ICJE04.,
                ICJE5 = ICJE.ICJE05., ICJE6 = ICJE.ICJE06., ICJE7 = ICJE.ICJE07., ICJE8 = ICJE.ICJE08., ICJE9 = ICJE.ICJE09.,
                LastSession = A6)#, Online = A5)
 
@@ -34,6 +35,9 @@ dLS1$Age <- str_remove(dLS1$Age, " ans")
 dLS1$Age <- str_remove(dLS1$Age, "ans")
 
 dLS1$Age <- as.numeric(dLS1$Age)
+
+# Change badly encoded age
+dLS1$Age[dLS1$Age == 1997] <- 24
 
 # Gender
 dLS1$Gender[dLS1$Gender == "A1"] <- "Male"
@@ -78,133 +82,120 @@ dLS1$DrugUse[dLS1$DrugUse == "A2"] <- "No"
 dLS1$DrugUse <- factor(dLS1$DrugUse, ordered = F)
 
 ##### AUDIT
-# AUDIT01
-dLS1$AUDIT01[dLS1$AUDIT01 == "A1"] <- 0
-dLS1$AUDIT01[dLS1$AUDIT01 == "A2"] <- 1
-dLS1$AUDIT01[dLS1$AUDIT01 == "A3"] <- 2
-dLS1$AUDIT01[dLS1$AUDIT01 == "A4"] <- 3
-dLS1$AUDIT01[dLS1$AUDIT01 == "A5"] <- 4
-dLS1$AUDIT01[dLS1$AUDIT01 == ""] <- NA
+# ICJE1
+dLS1$ICJE1[dLS1$ICJE1 == "A1"] <- 0
+dLS1$ICJE1[dLS1$ICJE1 == "A2"] <- 1
+dLS1$ICJE1[dLS1$ICJE1 == "A3"] <- 2
+dLS1$ICJE1[dLS1$ICJE1 == "A4"] <- 3
+dLS1$ICJE1[dLS1$ICJE1 == ""] <- NA
 
-dLS1$AUDIT01 <- as.numeric(dLS1$AUDIT01)
+dLS1$ICJE1 <- as.numeric(dLS1$ICJE1)
 
-# AUDIT02
-dLS1$AUDIT02[dLS1$AUDIT02 == "A0"] <- 0
-dLS1$AUDIT02[dLS1$AUDIT02 == "A1"] <- 1
-dLS1$AUDIT02[dLS1$AUDIT02 == "A2"] <- 2
-dLS1$AUDIT02[dLS1$AUDIT02 == "A3"] <- 3
-dLS1$AUDIT02[dLS1$AUDIT02 == "A4"] <- 4
-dLS1$AUDIT02[dLS1$AUDIT02 == ""] <- NA
+# ICJE2
+dLS1$ICJE2[dLS1$ICJE2 == "A1"] <- 0
+dLS1$ICJE2[dLS1$ICJE2 == "A2"] <- 1
+dLS1$ICJE2[dLS1$ICJE2 == "A3"] <- 2
+dLS1$ICJE2[dLS1$ICJE2 == "A4"] <- 3
+dLS1$ICJE2[dLS1$ICJE2 == ""] <- NA
 
-dLS1$AUDIT02 <- as.numeric(dLS1$AUDIT02)
+dLS1$ICJE2 <- as.numeric(dLS1$ICJE2)
 
-# AUDIT03
-dLS1$AUDIT03[dLS1$AUDIT03 == "A031"] <- 0
-dLS1$AUDIT03[dLS1$AUDIT03 == "A032"] <- 1
-dLS1$AUDIT03[dLS1$AUDIT03 == "A033"] <- 2
-dLS1$AUDIT03[dLS1$AUDIT03 == "A034"] <- 3
-dLS1$AUDIT03[dLS1$AUDIT03 == "A035"] <- 4
-dLS1$AUDIT03[dLS1$AUDIT03 == ""] <- NA
+# ICJE3
+dLS1$ICJE3[dLS1$ICJE3 == "A1"] <- 0
+dLS1$ICJE3[dLS1$ICJE3 == "A2"] <- 1
+dLS1$ICJE3[dLS1$ICJE3 == "A3"] <- 2
+dLS1$ICJE3[dLS1$ICJE3 == "A4"] <- 3
+dLS1$ICJE3[dLS1$ICJE3 == ""] <- NA
 
-dLS1$AUDIT03 <- as.numeric(dLS1$AUDIT03)
+dLS1$ICJE3 <- as.numeric(dLS1$ICJE3)
 
-# AUDIT04
-dLS1$AUDIT04[dLS1$AUDIT04 == "A041"] <- 0
-dLS1$AUDIT04[dLS1$AUDIT04 == "A042"] <- 1
-dLS1$AUDIT04[dLS1$AUDIT04 == "A043"] <- 2
-dLS1$AUDIT04[dLS1$AUDIT04 == "A044"] <- 3
-dLS1$AUDIT04[dLS1$AUDIT04 == "A045"] <- 4
-dLS1$AUDIT04[dLS1$AUDIT04 == ""] <- NA
+# ICJE4
+dLS1$ICJE4[dLS1$ICJE4 == "A1"] <- 0
+dLS1$ICJE4[dLS1$ICJE4 == "A2"] <- 1
+dLS1$ICJE4[dLS1$ICJE4 == "A3"] <- 2
+dLS1$ICJE4[dLS1$ICJE4 == "A4"] <- 3
+dLS1$ICJE4[dLS1$ICJE4 == ""] <- NA
 
-dLS1$AUDIT04 <- as.numeric(dLS1$AUDIT04)
+dLS1$ICJE4 <- as.numeric(dLS1$ICJE4)
 
-# AUDIT05
-dLS1$AUDIT05[dLS1$AUDIT05 == "A051"] <- 0
-dLS1$AUDIT05[dLS1$AUDIT05 == "A052"] <- 1
-dLS1$AUDIT05[dLS1$AUDIT05 == "A053"] <- 2
-dLS1$AUDIT05[dLS1$AUDIT05 == "A054"] <- 3
-dLS1$AUDIT05[dLS1$AUDIT05 == "A055"] <- 4
-dLS1$AUDIT05[dLS1$AUDIT05 == ""] <- NA
+# ICJE5
+dLS1$ICJE5[dLS1$ICJE5 == "A1"] <- 0
+dLS1$ICJE5[dLS1$ICJE5 == "A2"] <- 1
+dLS1$ICJE5[dLS1$ICJE5 == "A3"] <- 2
+dLS1$ICJE5[dLS1$ICJE5 == "A4"] <- 3
+dLS1$ICJE5[dLS1$ICJE5 == ""] <- NA
 
-dLS1$AUDIT05 <- as.numeric(dLS1$AUDIT05)
+dLS1$ICJE5 <- as.numeric(dLS1$ICJE5)
 
-# AUDIT06
-dLS1$AUDIT06[dLS1$AUDIT06 == "A061"] <- 0
-dLS1$AUDIT06[dLS1$AUDIT06 == "A062"] <- 1
-dLS1$AUDIT06[dLS1$AUDIT06 == "A063"] <- 2
-dLS1$AUDIT06[dLS1$AUDIT06 == "A064"] <- 3
-dLS1$AUDIT06[dLS1$AUDIT06 == "A065"] <- 4
-dLS1$AUDIT06[dLS1$AUDIT06 == ""] <- NA
+# ICJE6
+dLS1$ICJE6[dLS1$ICJE6 == "A1"] <- 0
+dLS1$ICJE6[dLS1$ICJE6 == "A2"] <- 1
+dLS1$ICJE6[dLS1$ICJE6 == "A3"] <- 2
+dLS1$ICJE6[dLS1$ICJE6 == "A4"] <- 3
+dLS1$ICJE6[dLS1$ICJE6 == ""] <- NA
 
-dLS1$AUDIT06 <- as.numeric(dLS1$AUDIT06)
+dLS1$ICJE6 <- as.numeric(dLS1$ICJE6)
 
-# AUDIT07
-dLS1$AUDIT07[dLS1$AUDIT07 == "A071"] <- 0
-dLS1$AUDIT07[dLS1$AUDIT07 == "A072"] <- 1
-dLS1$AUDIT07[dLS1$AUDIT07 == "A073"] <- 2
-dLS1$AUDIT07[dLS1$AUDIT07 == "A074"] <- 3
-dLS1$AUDIT07[dLS1$AUDIT07 == "A075"] <- 4
-dLS1$AUDIT07[dLS1$AUDIT07 == ""] <- NA
+# ICJE7
+dLS1$ICJE7[dLS1$ICJE7 == "A1"] <- 0
+dLS1$ICJE7[dLS1$ICJE7 == "A2"] <- 1
+dLS1$ICJE7[dLS1$ICJE7 == "A3"] <- 2
+dLS1$ICJE7[dLS1$ICJE7 == "A4"] <- 3
+dLS1$ICJE7[dLS1$ICJE7 == ""] <- NA
 
-dLS1$AUDIT07 <- as.numeric(dLS1$AUDIT07)
+dLS1$ICJE7 <- as.numeric(dLS1$ICJE7)
 
-# AUDIT08
-dLS1$AUDIT08[dLS1$AUDIT08 == "A081"] <- 0
-dLS1$AUDIT08[dLS1$AUDIT08 == "A082"] <- 1
-dLS1$AUDIT08[dLS1$AUDIT08 == "A083"] <- 2
-dLS1$AUDIT08[dLS1$AUDIT08 == "A084"] <- 3
-dLS1$AUDIT08[dLS1$AUDIT08 == "A085"] <- 4
-dLS1$AUDIT08[dLS1$AUDIT08 == ""] <- NA
+# ICJE8
+dLS1$ICJE8[dLS1$ICJE8 == "A1"] <- 0
+dLS1$ICJE8[dLS1$ICJE8 == "A2"] <- 1
+dLS1$ICJE8[dLS1$ICJE8 == "A3"] <- 2
+dLS1$ICJE8[dLS1$ICJE8 == "A4"] <- 3
+dLS1$ICJE8[dLS1$ICJE8 == ""] <- NA
 
-dLS1$AUDIT08 <- as.numeric(dLS1$AUDIT08)
+dLS1$ICJE8 <- as.numeric(dLS1$ICJE8)
 
-# AUDIT09
-dLS1$AUDIT09[dLS1$AUDIT09 == "A091"] <- 0
-dLS1$AUDIT09[dLS1$AUDIT09 == "A092"] <- 2
-dLS1$AUDIT09[dLS1$AUDIT09 == "A093"] <- 4
-dLS1$AUDIT09[dLS1$AUDIT09 == ""] <- NA
+# ICJE9
+dLS1$ICJE9[dLS1$ICJE9 == "A1"] <- 0
+dLS1$ICJE9[dLS1$ICJE9 == "A2"] <- 1
+dLS1$ICJE9[dLS1$ICJE9 == "A3"] <- 2
+dLS1$ICJE9[dLS1$ICJE9 == "A4"] <- 3
+dLS1$ICJE9[dLS1$ICJE9 == ""] <- NA
 
-dLS1$AUDIT09 <- as.numeric(dLS1$AUDIT09)
+dLS1$ICJE9 <- as.numeric(dLS1$ICJE9)
 
-# AUDIT10
-dLS1$AUDIT10[dLS1$AUDIT10 == "A101"] <- 0
-dLS1$AUDIT10[dLS1$AUDIT10 == "A102"] <- 2
-dLS1$AUDIT10[dLS1$AUDIT10 == "A103"] <- 4
-dLS1$AUDIT10[dLS1$AUDIT10 == ""] <- NA
+dLS1 <- mutate(dLS1, ICJE = ICJE1 + ICJE2 + ICJE3 + ICJE4 + ICJE5 + ICJE6 + ICJE7 + ICJE8 + ICJE9)
 
-dLS1$AUDIT10 <- as.numeric(dLS1$AUDIT10)
-
-dLS1 <- mutate(dLS1, AUDIT = AUDIT01 + AUDIT02 + AUDIT03 + AUDIT04 + AUDIT05 + AUDIT06 + AUDIT07 + AUDIT08 + AUDIT09 + AUDIT10)
-
-dLS1 <- AddDummyCol(dLS1, "Alc", "HC")
-dLS1$Alc[dLS1$AUDIT >= 10] <- "Alc"
-
-##### Binge Drinking
-dLS1 <- AddDummyCol(dLS1, "BD")
+dLS1 <- AddDummyCol(dLS1, "Grp", "HC")
+dLS1$Grp[dLS1$ICJE >= 4] <- "PG"
 
 ##### Last drink
-dLS1$LastDrink[dLS1$LastDrink == "A1"] <- "MoreThan1Month"
-dLS1$LastDrink[dLS1$LastDrink == "A2"] <- "LessThan1Month"
-dLS1$LastDrink[dLS1$LastDrink == "A3"] <- "ThisWeek"
-dLS1$LastDrink[dLS1$LastDrink == "A4"] <- "Yesterday"
-dLS1$LastDrink[dLS1$LastDrink == "A5"] <- "Today"
+dLS1$LastSession[dLS1$LastSession == "A1"] <- NA
+dLS1$LastSession[dLS1$LastSession == "A2"] <- "MoreThan1Month"
+dLS1$LastSession[dLS1$LastSession == "A3"] <- "LessThan1Month"
+dLS1$LastSession[dLS1$LastSession == "A4"] <- "ThisWeek"
+dLS1$LastSession[dLS1$LastSession == "A5"] <- "Yesterday"
+dLS1$LastSession[dLS1$LastSession == "A6"] <- "Today"
 
-dLS1$LastDrink <- factor(dLS1$LastDrink,
+dLS1$LastSession[is.na(dLS1$ICJE)] <- NA
+dLS1$LastSession <- factor(dLS1$LastSession,
                          levels = c("MoreThan1Month", "LessThan1Month", "ThisWeek", "Yesterday", "Today"), ordered = T)
 
 
 ##### Order
-dLS1 <- AddDummyCol(dLS1, "FirstVid", "Alcohol")
+dLS1 <- AddDummyCol(dLS1, "FirstVid", "Gambling")
 dLS1$FirstVid[dLS1$Age%%2 == 1] <- "Neutral"
 
 dLS1$FirstVid <- factor(dLS1$FirstVid, ordered = F)
 
 ########## Final Frames
-dF <- select(dLS1, NS, Mail1, FirstVid, Age, Gender, StudyLvl, Work, AUDIT, Alc, BD, LastDrink)
-dRecr <- select(dLS1, Mail1, AUDIT, BD, Age, Gender, Contactable, DrugUse)
+dF <- select(dLS1, NS, Mail1, FirstVid, Age, Gender, StudyLvl, Work, ICJE, Grp, LastSession)
+dRecr <- dLS1%>%
+  select(Mail1, Grp, ICJE, Age, Gender, Contactable, DrugUse)%>%
+  filter(Contactable == "Yes")
+
 dMailLS1 <- select(dLS1, Mail1)
 
 ########## Export
 write.table(dF, paste0(Output_path, "dLS1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
-write.table(dRecr, "dRecrutement.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
+write_xlsx(dRecr, "dRecrutement.xlsx")
 write.table(dMailLS1, "AdditionalInfo/MailList/MailLS1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
