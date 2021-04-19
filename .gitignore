@@ -1,4 +1,14 @@
 dRecrutementGambling.xlsx
+Output/dTotAnonyme.txt
+Output/dTotAnonyme.xlsx
+ExtractLS_Test.R
+AdditionalInfo/MailList
+Data/LimeSurveyQuestionnaires/Raw
+Data/LimeSurveyQuestionnaires/Processed
+
+Data/Pavlovia/J1
+Data/Pavlovia/J2
+Data/Pavlovia/Processed
 
 # History files
 .Rhistory
