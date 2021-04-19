@@ -1,7 +1,6 @@
-Datapath = "Data/Pavlovia/J1/"
-d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoNa_2021-04-17_18h08.13.435.csv"))
-Time = 1
-
+# Datapath = "Data/Pavlovia/J1/"
+# d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoNa_2021-04-17_18h08.13.435.csv"))
+# Time = 1
 ComputeRLT <- function(d, Time = 1){
   if (Time == 1){
     dDaw <- d%>%
