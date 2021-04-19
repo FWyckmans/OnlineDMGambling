@@ -57,11 +57,10 @@ for (Fun in dir("Functions/")) {
 }
 
 ##### List of badly spelled email by participant
-MailToChange <- list("thomas.bode.blanco@ulb.be" = "thomas.bode.blanco@hotmail.com",
-                     "francedeneweth@hotmailcom" = "francedeneweth@hotmail.com",
-                     "lailaplspl@hotmail.com " = "lailaplspl@hotmail.com",
-                     "lauralecocq97@gmail.com " = "lauralecocq97@gmail.com",
-                     "nathandebrem@gmail.Com" = "nathandebrem@gmail.com",
-                     "willy.kinsch@hotmail.com" = "Willy.kinsch@hotmail.com")
+MailToChange <- list("marouan.lahlafi@ulb.ac.be" = "marouan.lahlafi@ulb.be",
+                     "Imoan@live.be" = "imoan@live.be",
+                     "robin.gautier13@gmail.com " = "robin.gautier13@gmail.com",
+                     "Laetitia.Mbiada.Fapom@ulb.be" = "laetitiambiada@gmail.com",
+                     "oumayma.achahboune@ulb.be" = "oumayma.acha@outlook.com")
 
 ##### List with column names by type of variable for further references

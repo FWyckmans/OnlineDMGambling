@@ -1,6 +1,6 @@
 # Mail check
 # Initialization
-source("DMA_Init.R")
+source("DMG_Init.R")
 
 Datapath = "AdditionalInfo/MailList/"
 Output_path = "AdditionalInfo/MailList/"
