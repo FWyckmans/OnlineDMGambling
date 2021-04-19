@@ -17,11 +17,36 @@ dLS1 <- dLS1 %>%
   filter(E2 == "A1")%>% # Remove not consenting
   filter(!E1 %in% TestMail)
 
+# Create df for type of game
+dType <- dLS1%>%
+  select(NS, Loterie = A3.A1., Casino = A3.A2., Bingo = A3.A3., Carte = A3.A5., Courses = A3.A6., Bourse = A3.A7.,
+         Machine = A3.A8., Adresse = A3.A10., Des = A3.A9., Sport = A3.A4., Poker = A3.A12., Other = A3.A11.)
+dType <- AddDummyCol(dType, "MainGame")
+
+for (i in c(2:(length(dType)-1))) {
+  dType[i][dType[i]=="A1"] <- 0
+  dType[i][dType[i]=="A2"] <- 1
+  dType[i][dType[i]=="A3"] <- 2
+  dType[i][dType[i]=="A4"] <- 3
+  dType[i][dType[i]=="A5"] <- 4
+  dType[[i]] <- as.numeric(dType[[i]])
+}
+
+for (i in c(1:length(dType$MainGame))) {
+  if (!is.na(dType$Loterie[i])){
+    maingamesCol = as.numeric(which.max(dType[i,c(2:(length(dType)-2))]))
+    maingames = colnames(dType[maingamesCol+1])
+    dType$MainGame[i] = maingames
+    }
+}
+
+dLS1 <- cbind(dLS1, dType["MainGame"])
+
 # Main df
 dLS1 <- select(dLS1, NS, Mail1 = E1, Age = IP01, Gender = IP02, StudyLvl = IP03, Work = IP06, Contactable = IP04, DrugUse = IP05,
                ICJE1 = ICJE.ICJE01., ICJE2 = ICJE.ICJE02., ICJE3 = ICJE.ICJE03., ICJE4 = ICJE.ICJE04.,
                ICJE5 = ICJE.ICJE05., ICJE6 = ICJE.ICJE06., ICJE7 = ICJE.ICJE07., ICJE8 = ICJE.ICJE08., ICJE9 = ICJE.ICJE09.,
-               LastSession = A6)#, Online = A5)
+               LastSession = A6, MainGame)#, Online = A5)
 
 # Remove duplicates
 dLS1 = dLS1[order(dLS1[,'Mail1'],-dLS1[,'NS']),]
@@ -188,9 +213,9 @@ dLS1$FirstVid[dLS1$Age%%2 == 1] <- "Neutral"
 dLS1$FirstVid <- factor(dLS1$FirstVid, ordered = F)
 
 ########## Final Frames
-dF <- select(dLS1, NS, Mail1, FirstVid, Age, Gender, StudyLvl, Work, ICJE, Grp, LastSession)
+dF <- select(dLS1, NS, Mail1, FirstVid, Age, Gender, StudyLvl, Work, ICJE, Grp, MainGame, LastSession)
 dRecr <- dLS1%>%
-  select(Mail1, Grp, ICJE, Age, Gender, Contactable, DrugUse)%>%
+  select(Mail1, Grp, ICJE, MainGame, Age, Gender, Contactable, DrugUse)%>%
   filter(Contactable == "Yes")
 
 dMailLS1 <- select(dLS1, Mail1)
