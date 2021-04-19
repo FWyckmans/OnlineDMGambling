@@ -10,7 +10,7 @@ dQ <- read.delim("Data/LimeSurveyQuestionnaires/Processed/dQuestionnaireTot.txt"
 # Removal of (nearly) empty CSV
 PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                  dir(Datapath, pattern = "InstrMarkovTaskVideoG"),
-                "PARTICIPANT_InstrMarkovVideoG_2021-02-17_13h04.23.228.csv",
+                "PARTICIPANT_InstrMarkovVideoG_2021-02-17_13h04.23.228.csv",     # Empty CSV
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-08_14h59.04.591.csv",
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-08_21h06.58.487.csv",
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-08_21h07.12.056.csv",
@@ -33,7 +33,20 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.20.450.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.50.170.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.52.513.csv",
-                "PARTICIPANT_InstructionMarkovVideoG_2021-02-17_12h46.54.912.csv")
+                "PARTICIPANT_InstructionMarkovVideoG_2021-02-17_12h46.54.912.csv", # Empty Video Gambling
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-08_21h05.42.679.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-09_13h47.58.145.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-09_13h52.37.593.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-27_14h22.34.372.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-04-15_21h45.09.803.csv",
+                "PARTICIPANT_InstructionMarkovVideoN_2021-03-08_14h18.09.893.csv",
+                "PARTICIPANT_InstructionMarkovVideoN_2021-03-08_16h01.32.874.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-08_15h03.22.778.csv", # Nearly empty Video Gambling
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-09_10h35.43.493.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-03-26_14h13.44.273.csv",
+                
+                "PARTICIPANT_InstructionMarkovVideoN_2021-03-09_18h05.00.628.csv", # Empty Video N
+                "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv")
 
 dt <- dir(Datapath)
 ParticipantToKeep <- !(dt %in% PSToRemove)
@@ -71,4 +84,4 @@ dMail1 = data.frame(Mail)
 write.table(dRL1, paste0(Output_path, "RLDay1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dMail1, "AdditionalInfo/MailList/MailD1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 
-print(i)
+# print(i)
