@@ -1,5 +1,5 @@
 # Initialization
-source("DMA_Init.R")
+source("DMG_Init.R")
 Datapath = "Data/LimeSurveyQuestionnaires/Raw/"
 Output_path = "Data/LimeSurveyQuestionnaires/Processed/"
 
@@ -9,13 +9,12 @@ dLS1 <- read.csv(paste0(Datapath, "ResultLS1.csv"), encoding="UTF-8")
 
 # Rename and select columns
 colnames(dLS1)[1] <- "NS"
+TestMail <- c("test", "test ", "Test", "TEST", "TEST ", "TEST 2", "TEST3", "test 3", "testbis", "de")
+
 dLS1 <- dLS1 %>%
   filter(lastpage == 4)%>% # Remove unfinished
   filter(E2 == "A1")%>% # Remove not consenting
-  filter(E1 != "test")%>%
-  filter(E1 != "Test")%>%
-  filter(E1 != "TEST")%>%
-  filter(E1 != "noemie.bonjean@ulb.be")
+  filter(!E1 %in% TestMail)
 
 # Main df
 dLS1 <- select(dLS1, NS, Mail1 = E1, Age = IP01, Gender = IP02, StudyLvl = IP03, Work = IP06, Contactable = IP04, DrugUse = IP05,
