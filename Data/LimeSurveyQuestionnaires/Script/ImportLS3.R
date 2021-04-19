@@ -1,5 +1,5 @@
 # Initialization
-source("DMA_Init.R")
+source("DMG_Init.R")
 Datapath = "Data/LimeSurveyQuestionnaires/Raw/"
 Output_path = "Data/LimeSurveyQuestionnaires/Processed/"
 
@@ -9,12 +9,12 @@ dLS3 <- read.csv(paste0(Datapath, "ResultLS3.csv"), encoding="UTF-8")
 
 # Rename and select columns
 colnames(dLS3)[1] <- "NS"
+TestMail <- c("test", "test ", "Test", "TEST", "TEST ", "TEST 2", "TEST3", "test 3", "testbis", "de",
+              "https://survey.ulb.ac.be/survey3/index.php/388295")
+
 dLS3 <- dLS3 %>%
-  filter(lastpage == 9)%>% # Remove unfinished
-  filter(ID01 != "test")%>%
-  filter(ID01 != "Test")%>%
-  filter(ID01 != "TEST")%>%
-  filter(ID01 != "noemie.bonjean@ulb.be")
+  filter(lastpage == 10)%>% # Remove unfinished
+  filter(!ID01 %in% TestMail)
 
 # Main df
 dLS3 <- dLS3%>%
@@ -145,6 +145,107 @@ dCERQ <- dCERQ%>%
          CERQNonAdaptative = CERQSelfBlame + CERQRumination + CERQDramatization + CERQOtherBlame,
   )
 
+##### AUDIT
+dAUDIT <- select(dLS3, NS, AUDIT01:AUDIT10)
+
+# AUDIT01
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == "A1"] <- 0
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == "A2"] <- 1
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == "A3"] <- 2
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == "A4"] <- 3
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == "A5"] <- 4
+dAUDIT$AUDIT01[dAUDIT$AUDIT01 == ""] <- NA
+
+dAUDIT$AUDIT01 <- as.numeric(dAUDIT$AUDIT01)
+
+# AUDIT02
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == "A0"] <- 0
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == "A1"] <- 1
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == "A2"] <- 2
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == "A3"] <- 3
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == "A4"] <- 4
+dAUDIT$AUDIT02[dAUDIT$AUDIT02 == ""] <- NA
+
+dAUDIT$AUDIT02 <- as.numeric(dAUDIT$AUDIT02)
+
+# AUDIT03
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == "A031"] <- 0
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == "A032"] <- 1
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == "A033"] <- 2
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == "A034"] <- 3
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == "A035"] <- 4
+dAUDIT$AUDIT03[dAUDIT$AUDIT03 == ""] <- NA
+
+dAUDIT$AUDIT03 <- as.numeric(dAUDIT$AUDIT03)
+
+# AUDIT04
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == "A041"] <- 0
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == "A042"] <- 1
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == "A043"] <- 2
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == "A044"] <- 3
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == "A045"] <- 4
+dAUDIT$AUDIT04[dAUDIT$AUDIT04 == ""] <- NA
+
+dAUDIT$AUDIT04 <- as.numeric(dAUDIT$AUDIT04)
+
+# AUDIT05
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == "A051"] <- 0
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == "A052"] <- 1
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == "A053"] <- 2
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == "A054"] <- 3
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == "A055"] <- 4
+dAUDIT$AUDIT05[dAUDIT$AUDIT05 == ""] <- NA
+
+dAUDIT$AUDIT05 <- as.numeric(dAUDIT$AUDIT05)
+
+# AUDIT06
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == "A061"] <- 0
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == "A062"] <- 1
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == "A063"] <- 2
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == "A064"] <- 3
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == "A065"] <- 4
+dAUDIT$AUDIT06[dAUDIT$AUDIT06 == ""] <- NA
+
+dAUDIT$AUDIT06 <- as.numeric(dAUDIT$AUDIT06)
+
+# AUDIT07
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == "A071"] <- 0
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == "A072"] <- 1
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == "A073"] <- 2
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == "A074"] <- 3
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == "A075"] <- 4
+dAUDIT$AUDIT07[dAUDIT$AUDIT07 == ""] <- NA
+
+dAUDIT$AUDIT07 <- as.numeric(dAUDIT$AUDIT07)
+
+# AUDIT08
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == "A081"] <- 0
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == "A082"] <- 1
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == "A083"] <- 2
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == "A084"] <- 3
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == "A085"] <- 4
+dAUDIT$AUDIT08[dAUDIT$AUDIT08 == ""] <- NA
+
+dAUDIT$AUDIT08 <- as.numeric(dAUDIT$AUDIT08)
+
+# AUDIT09
+dAUDIT$AUDIT09[dAUDIT$AUDIT09 == "A091"] <- 0
+dAUDIT$AUDIT09[dAUDIT$AUDIT09 == "A092"] <- 2
+dAUDIT$AUDIT09[dAUDIT$AUDIT09 == "A093"] <- 4
+dAUDIT$AUDIT09[dAUDIT$AUDIT09 == ""] <- NA
+
+dAUDIT$AUDIT09 <- as.numeric(dAUDIT$AUDIT09)
+
+# AUDIT10
+dAUDIT$AUDIT10[dAUDIT$AUDIT10 == "A101"] <- 0
+dAUDIT$AUDIT10[dAUDIT$AUDIT10 == "A102"] <- 2
+dAUDIT$AUDIT10[dAUDIT$AUDIT10 == "A103"] <- 4
+dAUDIT$AUDIT10[dAUDIT$AUDIT10 == ""] <- NA
+
+dAUDIT$AUDIT10 <- as.numeric(dAUDIT$AUDIT10)
+
+dAUDIT <- mutate(dAUDIT, AUDIT = AUDIT01 + AUDIT02 + AUDIT03 + AUDIT04 + AUDIT05 + AUDIT06 + AUDIT07 + AUDIT08 + AUDIT09 + AUDIT10)
+
 ##### Check if tests OK
 dTest <- select(dLS3, NS, Test01, Test02)
 dTest <- AddDummyCol(dTest, "TestQOK", 0)
@@ -162,7 +263,7 @@ dTest$TestQOK[dTest$Testok == 2] <- 1
 
 ########## Final Frame
 dF <- cbind(dLS3[c(1, 2)], dTest[c("TestQOK", "Test01", "Test02")],
-            dCAST["CAST"], dFager["Fager"],
+            dCAST["CAST"], dFager["Fager"], dAUDIT["AUDIT"],
             dCoH[c("Auto", "Routine")], dUPPS[c("UPPS", "NegUr", "PosUr", "LoPr", "LoPe", "SS")], dPANAS[c("PosAff", "NegAff")],
             dBeck["BDI"], dCERQ[c("CERQAdaptative", "CERQNonAdaptative")])
 
