@@ -1,6 +1,6 @@
 ##### Merge dLS
 # Initialization
-source("DMA_Init.R")
+source("DMG_Init.R")
 Datapath = "Data/LimeSurveyQuestionnaires/Processed/"
 Output_path = "Data/LimeSurveyQuestionnaires/Processed/"
 
