@@ -197,5 +197,5 @@ dMailLS1 <- select(dLS1, Mail1)
 
 ########## Export
 write.table(dF, paste0(Output_path, "dLS1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
-write_xlsx(dRecr, "dRecrutement.xlsx")
+write_xlsx(dRecr, "dRecrutementGambling.xlsx")
 write.table(dMailLS1, "AdditionalInfo/MailList/MailLS1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
