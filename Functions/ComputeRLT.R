@@ -1,6 +1,7 @@
 # Datapath = "Data/Pavlovia/J1/"
-# d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoNa_2021-04-17_18h08.13.435.csv"))
+# d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoG_2021-03-01_20h34.38.322.csv"))
 # Time = 1
+
 ComputeRLT <- function(d, Time = 1){
   if (Time == 1){
     dDaw <- d%>%
@@ -89,8 +90,11 @@ ComputeRLT <- function(d, Time = 1){
   # OK2 Max 95% same choice at step 1
   fe = table(dDaw$Choice1)[1]/(table(dDaw$Choice1)[1] + table(dDaw$Choice1)[2]) < 0.95
   fi = table(dDaw$Choice1)[2]/(table(dDaw$Choice1)[2] + table(dDaw$Choice1)[1]) < 0.95
-  if ((fe == T) & (fi == T)){
-    OKRL$OK2 <- 1
+  
+  if (!is.na(fe) & !is.na(fi)){
+    if ((fe == T) & (fi == T)){
+      OKRL$OK2 <- 1
+    }
   }
   
   # Minimum 100 trials
