@@ -9,3 +9,5 @@ source("Data/Pavlovia/Script/DataD1.R")
 source("Data/Pavlovia/Script/DataD2.R")
 
 source("Data/MergeAll.R")
+
+source("AdditionalInfo/MailList/MailCheck.R")
