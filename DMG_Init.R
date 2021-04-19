@@ -58,7 +58,6 @@ for (Fun in dir("Functions/")) {
 
 ##### List of badly spelled email by participant
 MailToChange <- list("thomas.bode.blanco@ulb.be" = "thomas.bode.blanco@hotmail.com",
-                     # "willy.kinsch@hotmail.com" = "Willy.kinsch@hotmail.com",
                      "francedeneweth@hotmailcom" = "francedeneweth@hotmail.com",
                      "lailaplspl@hotmail.com " = "lailaplspl@hotmail.com",
                      "lauralecocq97@gmail.com " = "lauralecocq97@gmail.com",
