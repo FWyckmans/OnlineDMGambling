@@ -18,8 +18,9 @@ dLS1 <- dLS1 %>%
 
 # Main df
 dLS1 <- select(dLS1, NS, Mail1 = E1, Age = IP01, Gender = IP02, StudyLvl = IP03, Work = IP06, Contactable = IP04, DrugUse = IP05,
-               "AUDIT01", "AUDIT02", "AUDIT03", "AUDIT04", "AUDIT05", "AUDIT06", "AUDIT07", "AUDIT08", "AUDIT09", "AUDIT10",
-               BD1 = QAU1, BD2 = QAU2, BD3 = QUA3, LastDrink = A6)
+               Gambling = ICJE0, ICJE1 = ICJE.ICJE01., ICJE2 = ICJE.ICJE02., ICJE3 = ICJE.ICJE03., ICJE4 = ICJE.ICJE04.,
+               ICJE5 = ICJE.ICJE05., ICJE6 = ICJE.ICJE06., ICJE7 = ICJE.ICJE07., ICJE8 = ICJE.ICJE08., ICJE9 = ICJE.ICJE09.,
+               LastSession = A6)#, Online = A5)
 
 # Remove duplicates
 dLS1 = dLS1[order(dLS1[,'Mail1'],-dLS1[,'NS']),]
