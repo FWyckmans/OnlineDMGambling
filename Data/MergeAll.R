@@ -91,5 +91,11 @@ colnames(dNeF) <- sub("Stress6", "StressAfGamb2", colnames(dNeF))
 dTot <- rbind(dGaF, dNeF)
 
 ##### Export
-write.table(dTot, paste0(Output_path, "dTot.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
-write_xlsx(dTot, paste0(Output_path, "dTot.xlsx"))
+write.table(dTot, paste0(Output_path, "dTotAnonyme.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
+write_xlsx(dTot, paste0(Output_path, "dTotAnonyme.xlsx"))
+
+# dTot anonymous
+dTotA <- dTot[,-2]
+
+write.table(dTotA, paste0(Output_path, "dTot.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
+write_xlsx(dTotA, paste0(Output_path, "dTot.xlsx"))
