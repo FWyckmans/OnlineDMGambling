@@ -32,6 +32,8 @@ PS <- dt[ParticipantToKeep]
 Mail = c()
 Compt = 1
 dRL2 <- data.frame()
+dComp <- data.frame()
+
 for (i in PS) {
   d <- read.csv(paste0(Datapath, i))
   
@@ -46,6 +48,8 @@ for (i in PS) {
   
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 2)
+    dCompPS$Mail = Mail[Compt]
+    dComp <- rbind(dComp, dCompPS)
     dPS$MailP1 <- Mail[Compt]
     dLick <- LickRL(d, 2)
     dRL <- cbind(dPS, dLick)
@@ -58,4 +62,4 @@ dMail2 = data.frame(Mail)
 
 write.table(dRL2, paste0(Output_path, "RLDay2.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dMail2, "AdditionalInfo/MailList/MailD2.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
-# print(i)
+write.table(dComp, paste0(Output_path, "Comp2.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")

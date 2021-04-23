@@ -55,6 +55,8 @@ PS <- dt[ParticipantToKeep]
 Mail = c()
 Compt = 1
 dRL1 <- data.frame()
+dComp <- data.frame()
+
 for (i in PS) {
   d <- read.csv(paste0(Datapath, i))
   
@@ -70,7 +72,8 @@ for (i in PS) {
   # Compute score
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 1)
-    dPS$MailP1 <- Mail[Compt]
+    dCompPS$Mail = Mail[Compt]
+    dComp <- rbind(dComp, dCompPS)
     dLick <- LickRL(d, 1)
     dRL <- cbind(dPS, dLick)
     dRL1 <- rbind(dRL1, dRL)
@@ -83,5 +86,4 @@ dMail1 = data.frame(Mail)
 
 write.table(dRL1, paste0(Output_path, "RLDay1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dMail1, "AdditionalInfo/MailList/MailD1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
-
-# print(i)
+write.table(dComp, paste0(Output_path, "Comp1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
