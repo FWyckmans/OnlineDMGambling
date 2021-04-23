@@ -186,7 +186,7 @@ nwarmup = niter/2
 
 ### AlcFirst
 # Comp
-outputAfGamb <- ts_par7(data = dCompAfGamb, niter = 3000, nwarmup = 1500, nchain = 4, ncore = 4)
+outputAfGamb <- ts_par7(data = dCompAfGamb, niter = 4000, nwarmup = 200, nchain = 4, ncore = 4)
 dOutputAfGamb <- outputAfAlc$allIndPars
 
 # Fill dF
