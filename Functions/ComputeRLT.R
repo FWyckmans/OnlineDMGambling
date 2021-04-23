@@ -1,5 +1,5 @@
 # Datapath = "Data/Pavlovia/J1/"
-# d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoG_2021-03-01_20h34.38.322.csv"))
+# d <- read.csv(paste0(Datapath, "PARTICIPANT_InstructionMarkovVideoNa_2021-04-17_18h08.13.435.csv"))
 # Time = 1
 
 ComputeRLT <- function(d, Time = 1){
@@ -46,6 +46,12 @@ ComputeRLT <- function(d, Time = 1){
     filter(RT1 <= 2)%>%
     filter(RT2 <= 2)%>%
     filter(Index > 10)
+  
+  dCompPS <- dDaw%>%
+    select(Mail = MailP1, ExpName, Trial = Index, Stay, PrReward, PrTransition, RT1, RT2,
+           Choice1, Choice2, reward = Reward, transition = Transition)
+  
+  dCompPS <<- AddDummyCol(dCompPS, "Time", Time)
   
   dD <- dDaw%>%
     group_by(MailP1, ExpName, PrReward, PrTransition)%>%
