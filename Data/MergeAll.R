@@ -90,6 +90,9 @@ colnames(dNeF) <- sub("Stress6", "StressAfGamb2", colnames(dNeF))
 
 dTot <- rbind(dGaF, dNeF)
 
+##### Remove failed participant
+dTot <- filter(dTot, (!(Mail1 %in% FU)))
+
 ##### Export
 write.table(dTot, paste0(Output_path, "dTotAnonyme.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write_xlsx(dTot, paste0(Output_path, "dTotAnonyme.xlsx"))

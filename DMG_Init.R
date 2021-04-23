@@ -63,4 +63,6 @@ MailToChange <- list("marouan.lahlafi@ulb.ac.be" = "marouan.lahlafi@ulb.be",
                      "Laetitia.Mbiada.Fapom@ulb.be" = "laetitiambiada@gmail.com",
                      "oumayma.achahboune@ulb.be" = "oumayma.acha@outlook.com")
 
-##### List with column names by type of variable for further references
+
+##### List of participant who gave two different ages for LS1 and LS2
+FU = c("pauline.annaert@hotmail.com", "r.1991@hotmail.fr")

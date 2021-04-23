@@ -18,7 +18,7 @@ dLS2 <- dLS2 %>%
 
 # Main df
 dLS2 <- dLS2%>%
-  select(NS, Mail2 = E1, LastSession2 = Ga1, LastSessionDuration = Ga2)
+  select(NS, Mail2 = E1, Age = IP01, LastSession2 = Ga1, LastSessionDuration = Ga2)
 
 # Remove duplicates
 dLS2 = dLS2[order(dLS2[,'Mail2'],-dLS2[,'NS']),]
@@ -44,7 +44,9 @@ dLS2$LastSession2 <- factor(dLS2$LastSession2, levels = c("Earlier", "BeforeS1",
 ########## Final Frames
 dF <- select(dLS2, NS, Mail2, LastSession2, LastSessionDuration)
 dMailLS2 <- select(dLS2, Mail2)
+dAge <- dLS2[,c(1:3)]
 
 ########## Export
 write.table(dF, paste0(Output_path, "dLS2.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dMailLS2, "AdditionalInfo/MailList/MailLS2.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
+write.table(dAge, "AdditionalInfo/MailList/AgeLS2.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
