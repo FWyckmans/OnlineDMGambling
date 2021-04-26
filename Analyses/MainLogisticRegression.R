@@ -35,7 +35,7 @@ pred = predict(RLGamb)
 
 # Evaluation
 Conf_MatGamb <- ConfMat(d = dRegLogGamb, pred = predict(RLGamb), DV = "Stay")
-RL_MetricGamb <- RLMetrics(Conf_MatGamb, pred = predict(RLGamb))
+RL_MetricGamb <- RLMetrics(Conf_MatGamb, pred = predict(RLGamb), T)
 
 # After Neutral
 RLNeu <- glmer(Stay ~ PrReward*PrTransition*Alc + (PrReward*PrTransition|subjID),
