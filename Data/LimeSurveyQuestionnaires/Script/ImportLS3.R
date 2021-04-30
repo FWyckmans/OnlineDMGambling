@@ -20,17 +20,17 @@ dLS3 <- dLS3 %>%
 dLS3 <- dLS3%>%
   select(NS, Mail3 = ID01, "CoH.CoH01.":colnames(dLS3[length(dLS3)]))
 
-# Remove duplicates
-dLS3 = dLS3[order(dLS3[,'Mail3'],-dLS3[,'NS']),]
-dLS3 = dLS3[!duplicated(dLS3$Mail3),]
-dLS3 = dLS3[order(dLS3[,'NS']),]  
-
 # Change badly spelled email if needed
 for (i in c(1:length(dLS3$Mail3))) {
   if (dLS3$Mail3[i] %in% names(MailToChange)){
     dLS3$Mail3[i] <- MailToChange[[dLS3$Mail3[i]]]
   }
 }
+
+# Remove duplicates
+dLS3 = dLS3[order(dLS3[,'Mail3'],-dLS3[,'NS']),]
+dLS3 = dLS3[!duplicated(dLS3$Mail3),]
+dLS3 = dLS3[order(dLS3[,'NS']),]
 
 ########## Columns handling
 ##### Test
