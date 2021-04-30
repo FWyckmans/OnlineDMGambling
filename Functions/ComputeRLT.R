@@ -55,7 +55,7 @@ ComputeRLT <- function(d, Time = 1){
   
   dD <- dDaw%>%
     group_by(MailP1, ExpName, PrReward, PrTransition)%>%
-    summarise(PStay = mean(Stay), RT1 = mean(RT1), RT2 = mean(RT2))%>%
+    summarise(PStay = mean(Stay), RT1 = mean(RT1), RT2 = mean(RT2), .groups = 'drop')%>%
     group_by()
   
   # Got to a large format
