@@ -18,6 +18,10 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_MarkovTaskGamblingJ2_2021-03-30_15h25.51.707.csv",
                 "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-05_09h43.19.657.csv",
                 "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-06_17h34.51.753.csv",
+                "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-20_13h01.26.289.csv",
+                "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-20_13h04.19.069.csv",
+                "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-20_13h04.21.610.csv",
+                "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-20_13h06.17.044.csv",
                 
                 "PARTICIPANT_MarkovTaskNeutreJ2_2021-02-17_13h05.02.100.csv",   # Empty CSV Neutral
                 "PARTICIPANT_MarkovTaskNeutreJ2_2021-03-26_16h20.41.513.csv",

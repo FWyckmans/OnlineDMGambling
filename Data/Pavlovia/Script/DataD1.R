@@ -25,6 +25,7 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-26_14h43.43.383.csv",
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-26_15h04.02.709.csv",
                 "PARTICIPANT_InstrMarkovVideoG_2021-03-28_19h21.50.808.csv",
+                "PARTICIPANT_InstrMarkovVideoG_2021-04-19_14h39.43.525.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-02-17_12h52.38.966.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-02-17_12h55.42.445.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-02-17_13h04.38.708.csv",
@@ -33,6 +34,7 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.20.450.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.50.170.csv",
                 "PARTICIPANT_InstrMarkovVideoN_2021-03-25_20h20.52.513.csv",
+                "PARTICIPANT_InstrMarkovVideoN_2021-04-19_15h51.43.751.csv",
                 "PARTICIPANT_InstructionMarkovVideoG_2021-02-17_12h46.54.912.csv", # Empty Video Gambling
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-08_21h05.42.679.csv",
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-09_13h47.58.145.csv",
@@ -46,7 +48,8 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-26_14h13.44.273.csv",
                 
                 "PARTICIPANT_InstructionMarkovVideoN_2021-03-09_18h05.00.628.csv", # Empty Video N
-                "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv")
+                "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv",
+                "PARTICIPANT_InstructionMarkovVideoN_2021-04-20_15h51.08.775.csv")
 
 dt <- dir(Datapath)
 ParticipantToKeep <- !(dt %in% PSToRemove)
