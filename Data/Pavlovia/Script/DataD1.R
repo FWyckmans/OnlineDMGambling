@@ -46,6 +46,10 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-08_15h03.22.778.csv", # Nearly empty Video Gambling
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-09_10h35.43.493.csv",
                 "PARTICIPANT_InstructionMarkovVideoG_2021-03-26_14h13.44.273.csv",
+                "PARTICIPANT_InstrMarkovVideoG_2021-05-01_13h04.45.830.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-05-01_13h09.04.617.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-05-06_00h58.46.789.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-05-06_01h00.11.439.csv",
                 
                 "PARTICIPANT_InstructionMarkovVideoN_2021-03-09_18h05.00.628.csv", # Empty Video N
                 "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv",
