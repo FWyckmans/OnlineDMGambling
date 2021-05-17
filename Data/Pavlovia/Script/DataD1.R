@@ -53,6 +53,7 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 
                 "PARTICIPANT_InstructionMarkovVideoN_2021-03-09_18h05.00.628.csv", # Empty Video N
                 "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv",
+                "PARTICIPANT_InstructionMarkovVideoN_2021-05-08_00h22.57.790.csv",
                 "PARTICIPANT_InstructionMarkovVideoN_2021-04-20_15h51.08.775.csv")
 
 dt <- dir(Datapath)
