@@ -214,9 +214,14 @@ dLS1$FirstVid <- factor(dLS1$FirstVid, ordered = F)
 
 ########## Final Frames
 dF <- select(dLS1, NS, Mail1, FirstVid, Age, Gender, StudyLvl, Work, ICJE, Grp, MainGame, LastSession)
+
+# Recruitement
 dRecr <- dLS1%>%
   select(Mail1, Grp, ICJE, MainGame, Age, Gender, Contactable, DrugUse)%>%
   filter(Contactable == "Yes")
+
+dRecrDaw <- dRecr%>%
+  filter(Grp == "PG", Gender == "Male")
 
 dMailLS1 <- select(dLS1, Mail1)
 dAge <- dLS1[, c(1, 2, 3)]
@@ -224,5 +229,6 @@ dAge <- dLS1[, c(1, 2, 3)]
 ########## Export
 write.table(dF, paste0(Output_path, "dLS1.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write_xlsx(dRecr, "dRecrutementGambling.xlsx")
+write_xlsx(dRecrDaw, "dRecrutementGamblingDaw.xlsx")
 write.table(dMailLS1, "AdditionalInfo/MailList/MailLS1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dAge, "AdditionalInfo/MailList/AgeLS1.txt", col.names = T, row.names = F, sep = "\t", dec = ".")

@@ -52,6 +52,7 @@ for (i in PS) {
   
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 2)
+    dPS$MailP1 = Mail[Compt]
     dCompPS$Mail = Mail[Compt]
     dComp <- rbind(dComp, dCompPS)
     dPS$MailP1 <- Mail[Compt]

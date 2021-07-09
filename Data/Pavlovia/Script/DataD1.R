@@ -64,6 +64,7 @@ Mail = c()
 Compt = 1
 dRL1 <- data.frame()
 dComp <- data.frame()
+i = 	"PARTICIPANT_InstructionMarkovVideoG_2021-03-26_14h19.28.091.csv"
 
 for (i in PS) {
   d <- read.csv(paste0(Datapath, i))
@@ -75,11 +76,14 @@ for (i in PS) {
   if (d$email[1] %in% names(MailToChange)){
     d$email[1] <- MailToChange[[d$email[1]]]
     Mail[Compt] <- d$email[1]
+    print(Mail[Compt])
+    print(i)
   }
   
   # Compute score
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 1)
+    dPS$MailP1 = Mail[Compt]
     dCompPS$Mail = Mail[Compt]
     dComp <- rbind(dComp, dCompPS)
     dLick <- LickRL(d, 1)

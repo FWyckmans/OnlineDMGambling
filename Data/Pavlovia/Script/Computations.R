@@ -150,7 +150,7 @@ dComp$Choice2 <- as.numeric(dComp$Choice2)
 dComp <- rename(dComp, level1_choice = Choice1, level2_choice = Choice2)
 
 ##### Main loop
-for (i in c(1:length(dCompFinal$Mail1))) {
+for (i in c(unique(dCompFinal$Mail1))) {
   dPS <- filter(dComp, Mail == dCompFinal$Mail1[i])
   dPS1 <- filter(dPS, Time == 1)
   dPS2 <- filter(dPS, Time == 2)
@@ -162,8 +162,8 @@ for (i in c(1:length(dCompFinal$Mail1))) {
   }
 }
 
-dTot <- cbind(dTot[ , -which(names(dTot) %in% c(ColRL, ColCom))], dCompFinal[c(4:length(dCompFinal))])
-dTotA <- cbind(dTotA[ , -which(names(dTotA) %in% c(ColRL, ColCom))], dCompFinal[c(4:length(dCompFinal))])
+# dTot <- cbind(dTot[ , -which(names(dTot) %in% c(ColRL, ColCom))], dCompFinal[c(4:length(dCompFinal))])
+# dTotA <- cbind(dTotA[ , -which(names(dTotA) %in% c(ColRL, ColCom))], dCompFinal[c(4:length(dCompFinal))])
 
 ##### MBMF computation
 ### dF
@@ -187,7 +187,7 @@ nwarmup = niter/2
 ### AlcFirst
 # Comp
 outputAfGamb <- ts_par7(data = dCompAfGamb, niter = 4000, nwarmup = 200, nchain = 4, ncore = 4)
-dOutputAfGamb <- outputAfAlc$allIndPars
+dOutputAfGamb <- outputAfGamb$allIndPars
 
 # Fill dF
 for (i in dOutputAfGamb[["subjID"]]) {
