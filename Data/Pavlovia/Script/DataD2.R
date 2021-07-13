@@ -51,7 +51,7 @@ for (i in PS) {
   }
   
   # Find problematic PS
-  if (Mail[Compt] == "clement.dollon@yahoo.fr"){
+  if ((!is.na(d$email)) & (d$email[1] == "clement.dollon@yahoo.fr")){
     print(i)}
   
   if (Mail[Compt] %in% dQ$Mail1){

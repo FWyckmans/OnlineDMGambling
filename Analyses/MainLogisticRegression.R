@@ -11,7 +11,7 @@ dRegLogNeu <- filter(dRegLog, Time == "AfterNeutral")
 
 ##### Logistic Regressions
 ## With Time
-RL <- glmer(Stay ~ PrReward*PrTransition*Time*Grp + (PrReward*PrTransition*Time|subjID),
+RL <- glmer(Stay ~ PrReward*PrTransition*Time*ICJE + (PrReward*PrTransition*Time|subjID),
             family = binomial, data = dRegLog, control = glmerControl(optimizer = "bobyqa"),
             nAGQ = 1)
 
