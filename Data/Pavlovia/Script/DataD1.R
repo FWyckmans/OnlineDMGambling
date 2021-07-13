@@ -76,10 +76,14 @@ for (i in PS) {
   if (d$email[1] %in% names(MailToChange)){
     d$email[1] <- MailToChange[[d$email[1]]]
     Mail[Compt] <- d$email[1]
-    print(Mail[Compt])
-    print(i)
+    # print(Mail[Compt])
+    # print(i)
   }
   
+  # Find problematic PS
+  if (Mail[Compt] == "clement.dollon@yahoo.fr"){
+    print(i)}
+    
   # Compute score
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 1)

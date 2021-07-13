@@ -65,6 +65,10 @@ for (i in PS) {
 
 dMail2 = data.frame(Mail)
 
+# Remove duplicates
+# dRL2 = dRL2[order(dRL2[,'MailP1'],-dRL2[,'NS']),]
+dRL2 = dRL2[!duplicated(dRL2$MailP1),]
+
 write.table(dRL2, paste0(Output_path, "RLDay2.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dMail2, "AdditionalInfo/MailList/MailD2.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dComp, paste0(Output_path, "Comp2.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")
