@@ -50,6 +50,10 @@ for (i in PS) {
     Mail[Compt] <- d$email[1]
   }
   
+  # Find problematic PS
+  if (Mail[Compt] == "clement.dollon@yahoo.fr"){
+    print(i)}
+  
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 2)
     dPS$MailP1 = Mail[Compt]

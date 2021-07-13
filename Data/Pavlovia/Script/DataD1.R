@@ -81,8 +81,8 @@ for (i in PS) {
   }
   
   # Find problematic PS
-  if (Mail[Compt] == "clement.dollon@yahoo.fr"){
-    print(i)}
+  # if (Mail[Compt] == "clement.dollon@yahoo.fr"){
+  #   print(i)}
     
   # Compute score
   if (Mail[Compt] %in% dQ$Mail1){
