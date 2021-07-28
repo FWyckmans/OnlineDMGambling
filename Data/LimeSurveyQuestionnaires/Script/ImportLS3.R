@@ -42,7 +42,7 @@ dCoH <- select(dLS3, NS, CoH.CoH01.:CoH.CoH27.)
 for (i in colnames(dCoH[2:length(dCoH)])) {
   dCoH[,i] <- str_remove(dCoH[,i], "A")
   dCoH[,i] <- as.numeric(dCoH[,i])
-  dCoH[,i] <- dCoH[,i] -1
+  dCoH[,i] <- dCoH[,i] - 1
 }
 
 dCoH <- dCoH%>%
@@ -56,7 +56,7 @@ dUPPS <- select(dLS3, NS, UPPS.UPPS01.:UPPS.UPPS20.)
 
 for (i in colnames(dUPPS[2:length(dUPPS)])) {
   dUPPS[,i] <- str_remove(dUPPS[,i], "U01")
-  dUPPS[,i] <- as.numeric(dUPPS[,i])
+  dUPPS[,i] <- 5 - as.numeric(dUPPS[,i])
 }
 
 dUPPS <- dUPPS%>%
