@@ -50,6 +50,11 @@ for (i in PS) {
     Mail[Compt] <- d$email[1]
   }
   
+  if (i == "PARTICIPANT_MarkovTaskGamblingJ2_2021-04-17_12h00.53.010.csv"){
+    d$email[1] <- "laura.gulizia@hotmail.com"
+    Mail[Compt] <- d$email[1]
+  }
+  
   # Find problematic PS
   if ((!is.na(d$email)) & (d$email[1] == "clement.dollon@yahoo.fr")){
     print(i)}

@@ -62,7 +62,8 @@ MailToChange <- list("marouan.lahlafi@ulb.ac.be" = "marouan.lahlafi@ulb.be",
                      "robin.gautier13@gmail.com " = "robin.gautier13@gmail.com",
                      "Laetitia.Mbiada.Fapom@ulb.be" = "laetitiambiada@gmail.com",
                      "oumayma.achahboune@ulb.be" = "oumayma.acha@outlook.com",
-                     "Ludovic.chardin@cegetel.net" = "ludovic.chardin@cegetel.net")
+                     "Ludovic.chardin@cegetel.net" = "ludovic.chardin@cegetel.net",
+                     "Damien_lecat@hotmail.com" = "damien_lecat@hotmail.com")
 
 
 ##### List of participant who gave two different ages for LS1 and LS2
