@@ -56,8 +56,8 @@ for (i in PS) {
   }
   
   # Find problematic PS
-  if ((!is.na(d$email)) & (d$email[1] == "clement.dollon@yahoo.fr")){
-    print(i)}
+  # if ((!is.na(d$email)) & (d$email[1] == "clement.dollon@yahoo.fr")){
+  #   print(i)}
   
   if (Mail[Compt] %in% dQ$Mail1){
     dPS <- ComputeRLT(d, 2)
