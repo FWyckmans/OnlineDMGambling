@@ -72,6 +72,7 @@ for (i in PS) {
   Compt = Compt + 1
 }
 
+# print(i)
 dMail2 = data.frame(Mail)
 
 # Remove duplicates
