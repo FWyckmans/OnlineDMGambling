@@ -220,6 +220,7 @@ for (i in dOutputAfGamb[["subjID"]]) {
 write.table(dTot, "Output/dTotAnonyme.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dTotA, "Output/dTot.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 
+dCompFinal <- dCompFinal[ , -which(names(dCompFinal) == "Mail1")]
 write.table(dCompFinal, "Output/dCompFinal.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 
 ### Neutral first
@@ -258,6 +259,7 @@ for (i in dOutputAfNeu[["subjID"]]) {
 write.table(dTot, "Output/dTotAnonyme.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 write.table(dTotA, "Output/dTot.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 
+dCompFinal <- dCompFinal[ , -which(names(dCompFinal) == "Mail1")]
 write.table(dCompFinal, "Output/dCompFinal.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
 
 
@@ -274,5 +276,7 @@ dRegLog$Time[(dRegLog$Time == 1 & dRegLog$FirstVid=="Gambling")|
                (dRegLog$Time == 2 & dRegLog$FirstVid=="Neutral")] <- "AfterGambling"
 dRegLog$Time[(dRegLog$Time == 1 & dRegLog$FirstVid=="Neutral")|
                (dRegLog$Time == 2 & dRegLog$FirstVid=="Gambling")] <- "AfterNeutral"
+
+dRegLog <- dRegLog[ , -which(names(dRegLog) == "Mail")]
 
 write.table(dRegLog, "Output/dRegLog.txt", col.names = T, row.names = F, sep = "\t", dec = ".")

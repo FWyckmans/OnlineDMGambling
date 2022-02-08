@@ -92,6 +92,8 @@ dTot <- rbind(dGaF, dNeF)
 
 ##### Remove failed participant
 dTot <- filter(dTot, (!(Mail1 %in% FU)))
+dTot <- AddDummyCol(dTot, "OKtot", 0)
+dTot$OKtot[dTot$OKRL_AfterGamb == 1 & dTot$OKRL_AfterNeutr == 1 & dTot$TestQOK == 1] <- 1
 
 ##### Export
 write.table(dTot, paste0(Output_path, "dTotAnonyme.txt"), col.names = T, row.names = F, sep = "\t", dec = ".")

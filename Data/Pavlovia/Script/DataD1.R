@@ -50,6 +50,7 @@ PSToRemove <- c(dir(Datapath, pattern = ".log.gz"),
                 "PARTICIPANT_InstructionMarkovVideoG_2021-05-01_13h09.04.617.csv",
                 "PARTICIPANT_InstructionMarkovVideoG_2021-05-06_00h58.46.789.csv",
                 "PARTICIPANT_InstructionMarkovVideoG_2021-05-06_01h00.11.439.csv",
+                "PARTICIPANT_InstructionMarkovVideoG_2021-11-27_09h15.09.228.csv",
                 
                 "PARTICIPANT_InstructionMarkovVideoN_2021-03-09_18h05.00.628.csv", # Empty Video N
                 "PARTICIPANT_InstructionMarkovVideoN_2021-04-06_10h23.48.341.csv",
@@ -99,7 +100,7 @@ for (i in PS) {
   Compt = Compt + 1
 }
 
-# print(i)
+print(i)
 dMail1 = data.frame(Mail)
 
 
