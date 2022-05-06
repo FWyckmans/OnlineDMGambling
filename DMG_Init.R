@@ -26,6 +26,7 @@ library(ggplot2)
 library(gridExtra)
 library(cowplot)
 library(corrplot)
+library(ggpubr)
 
 ## Stat and ML
 library(nlme)
@@ -34,6 +35,8 @@ library(BayesFactor)
 library(stats)
 library(FactoMineR)
 library(factoextra)
+library(interactions)
+library(rstatix)
 
 ## Misc (or don't remember and imported anyway)
 library(car)
@@ -63,7 +66,13 @@ MailToChange <- list("marouan.lahlafi@ulb.ac.be" = "marouan.lahlafi@ulb.be",
                      "Laetitia.Mbiada.Fapom@ulb.be" = "laetitiambiada@gmail.com",
                      "oumayma.achahboune@ulb.be" = "oumayma.acha@outlook.com",
                      "Ludovic.chardin@cegetel.net" = "ludovic.chardin@cegetel.net",
-                     "Damien_lecat@hotmail.com" = "damien_lecat@hotmail.com")
+                     "Damien_lecat@hotmail.com" = "damien_lecat@hotmail.com",
+                     "norakra123@gmail.com" = "norakrami123@gmail.com",
+                     "norakrami123" = "norakrami123@gmail.com",
+                     "julievetesse@icloud.com" = "julievetesse@icolud.com",
+                     "azizniang@icloud.com" = "Azizniang@icloud.com",
+                     "teamkebabs@icloud.com" = "teamkebabs@outlook.com",
+                     "litalynda@yahoo.com" = "litalynda@yahoo.com ")
 
 
 ##### List of participant who gave two different ages for LS1 and LS2
