@@ -2,6 +2,7 @@
 ##### Initialization
 source("DMG_Init.R")
 Datapath = "Output/Processed/"
+DoComp = FALSE
 
 # Packages
 library("rstan")
@@ -100,12 +101,16 @@ NWarmup = NIter/2
 
 ### AlcFirst
 # Comp
-outputAfGamb <- ts_par7(data = dCompAfGamb, niter = 4000, nwarmup = 2000, nchain = 4, ncore = 4)
-dOutputAfGamb <- outputAfGamb$allIndPars
+if (DoComp == TRUE){
+  outputAfGamb <- ts_par7(data = dCompAfGamb, niter = 4000, nwarmup = 2000, nchain = 4, ncore = 4)
+  saveRDS(outputAfGamb, file="Output/Model/output7P_AfGamb.Rdata")
+  
+  }else{
+    outputAfGamb <- readRDS(file="Output/Model/output7P_AfGamb.Rdata")
+  }
 
-# Save Computations if needed
+dOutputAfGamb <- outputAfGamb$allIndPars
 write.table(dOutputAfGamb, "Output/Processed/allIndParsG.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
-saveRDS(outputAfGamb, file="Output/Model/output7P_AfGamb.Rdata")
 
 # Fill dF
 for (i in dOutputAfGamb[["subjID"]]) {
@@ -135,12 +140,16 @@ write.table(dTotA, "Output/Processed/dTotComp.txt", col.names = T, row.names = F
 
 ### Neutral first
 # Comp
-outputAfNeu <- ts_par7(data = dCompAfNeu, niter = 4000, nwarmup = 2000, nchain = 4, ncore = 4)
-dOutputAfNeu <- outputAfNeu$allIndPars
+if (DoComp == TRUE){
+  outputAfNeu <- ts_par7(data = dCompAfNeu, niter = 4000, nwarmup = 2000, nchain = 4, ncore = 4)
+  # Save Computations if needed
+  saveRDS(outputAfNeu, file="Output/Model/output7P_AfNeu.Rdata")
+  }else{
+    outputAfNeu <- readRDS(file="Output/Model/output7P_AfNeu.Rdata")
+  }
 
-# Save Computations if needed
+dOutputAfNeu <- outputAfNeu$allIndPars
 write.table(dOutputAfNeu, "Output/Processed/allIndParsN.txt", col.names = T, row.names = F, sep = "\t", dec = ".")
-saveRDS(outputAfNeu, file="Output/Model/output7P_AfNeu.Rdata")
 
 # Fill dF
 for (i in dOutputAfNeu[["subjID"]]) {
