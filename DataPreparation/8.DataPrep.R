@@ -45,6 +45,13 @@ sum(d$Grp3 == 'PG')
 sum(d$Grp3 == 'G')
 sum(d$Grp3 == 'HC')
 
+##### Age Correction
+for (i in c(1: length(d$NS))){
+  if (d$Age[i] > 100){
+    d$Age[i] = 2020 - d$Age[i]
+  }
+}
+
 ##### Feature engineering
 # MB-MF
 d$MBc_AfterGamb = d$w_AfterGamb*d$beta1_AfterGamb
