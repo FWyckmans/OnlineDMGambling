@@ -5,6 +5,7 @@ remove(list = ls())
 Datapath = "RawData/"
 Output_path = "Output/"
 
+WithAnonyme = TRUE
 ##### Cran packages
 ## Install
 packages <- c("dplyr", "tidyr",
