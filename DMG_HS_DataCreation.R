@@ -13,9 +13,10 @@ source("AdditionalInfo/MailList/MailCheck.R")
 
 source("DataPreparation/4.Anonymization.R")
 
-# Launch from here if you do not have access to raw data
+# Launch from here if you do not have access to raw data and want to do the computations by yourselves
 source("DataPreparation/5.Computations.R")
 
+# Launch from here if you do not want to redo the computations and do not have all the raw data
 source("DataPreparation/6.AdditComp.R")
 
 source("DataPreparation/7.PrepForRegLog.R")
