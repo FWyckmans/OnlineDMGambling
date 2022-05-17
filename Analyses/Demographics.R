@@ -2,12 +2,26 @@
 ##### Initialization
 source("DMG_Init.R")
 
+CharDescr <- function(namelvl, Grp, col){
+  output = c()
+  for (j in namelvl){
+    n <- sum(dDem[[col]] == j & dDem$Grp3 == Grp)
+    
+    if (j != namelvl[length(namelvl)]){
+      output <- paste0(output, n, " ", j, " | ")
+    } else {
+      output <- paste0(output, n, " ", j)
+    }
+  }
+  return(output)
+}
+
 ##### Data
 d <- read.delim("Output/dFINAL.txt")
 
 # Demographic variables
-d <- AddDummyCol(d, "Smoker", 1)
-d$Smoker[is.na(d$Fager)] <- 0
+d <- AddDummyCol(d, "Smoker", "Yes")
+d$Smoker[is.na(d$Fager)] <- "No"
 
 DemVar = c("Age", "Gender", "StudyLvl",
            "ICJE", "AUDIT", "CAST", "Fager", "Smoker",
@@ -16,4 +30,60 @@ DemVar = c("Age", "Gender", "StudyLvl",
            "PosAff", "NegAff", "BDI",
            "CERQAdaptative", "CERQNonAdaptative")
 
-dDem <- select(d, Grp, Grp3C, all_of(DemVar))
+dDem <- select(d, NS, Grp, Grp3, all_of(DemVar))
+HCd <- c()
+Gd <- c()
+PGd <- c()
+
+i = 'Age'
+compt = 1
+
+for (i in DemVar){
+  if (typeof(dDem[[i]]) == "integer"){
+    mHC = round(mean(dDem[dDem$Grp3 == "HC",i], na.rm = T), 2)
+    sdHC = round(sd(dDem[dDem$Grp3 == "HC",i], na.rm = T), 2)
+    mdHC = round(median(dDem[dDem$Grp3 == "HC",i], na.rm = T), 2)
+    
+    HCi = paste0(mHC, " (", sdHC, ") | ", mdHC)
+    
+    mG = round(mean(dDem[dDem$Grp3 == "G",i], na.rm = T), 2)
+    sdG = round(sd(dDem[dDem$Grp3 == "G",i], na.rm = T), 2)
+    mdG = round(median(dDem[dDem$Grp3 == "G",i], na.rm = T), 2)
+    
+    Gi = paste0(mG, " (", sdG, ") | ", mdG)
+  
+    mPG = round(mean(dDem[dDem$Grp3 == "PG",i], na.rm = T), 2)
+    sdPG = round(sd(dDem[dDem$Grp3 == "PG",i], na.rm = T), 2)
+    mdPG = round(median(dDem[dDem$Grp3 == "PG",i], na.rm = T), 2)
+    
+    PGi = paste0(mPG, " (", sdPG, ") | ", mdPG)
+  }
+  
+  if (typeof(dDem[[i]]) == "character"){
+    namelvl = unique(dDem[[i]])
+    
+    HCi <- CharDescr(namelvl, "HC", i)
+    Gi <- CharDescr(namelvl, "G", i)
+    PGi <- CharDescr(namelvl, "PG", i)
+    }
+    
+  
+  HCd[compt] <- HCi
+  Gd[compt] <- Gi
+  PGd[compt] <- PGi
+  
+  compt = compt + 1
+}
+
+nameHC <- paste0("HC (", sum(dDem$Grp3 == "HC"), ")")
+nameG <- paste0("G (", sum(dDem$Grp3 == "G"), ")")
+namePG <- paste0("PG (", sum(dDem$Grp3 == "PG"), ")")
+
+dDescr <- data.frame(DemVar, HCd, Gd, PGd)
+
+names(dDescr)[names(dDescr) == 'HCd'] <- nameHC
+names(dDescr)[names(dDescr) == 'PGd'] <- namePG
+names(dDescr)[names(dDescr) == 'Gd'] <- nameG
+names(dDescr)[names(dDescr) == 'DemVar'] <- "Variables"
+
+write_xlsx(dDescr, "output/DescriptiveClinical.xlsx")
