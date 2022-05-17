@@ -1,13 +1,22 @@
 # Hyperscript df creation
+source("DataPreparation/1.1.ImportLS1.R")
+source("DataPreparation/1.2.ImportLS2.R")
+source("DataPreparation/1.3.ImportLS3.R")
+source("DataPreparation/1.4.MergeLSdf.R")
 
-source("Data/LimeSurveyQuestionnaires/Script/ImportLS1.R")
-source("Data/LimeSurveyQuestionnaires/Script/ImportLS2.R")
-source("Data/LimeSurveyQuestionnaires/Script/ImportLS3.R")
-source("Data/LimeSurveyQuestionnaires/Script/MergeLSdf.R")
+source("DataPreparation/2.1.DataD1.R")
+source("DataPreparation/2.2.DataD2.R")
 
-source("Data/Pavlovia/Script/DataD1.R")
-source("Data/Pavlovia/Script/DataD2.R")
-
-source("Data/MergeAll.R")
+source("DataPreparation/3.MergeAll.R")
 
 source("AdditionalInfo/MailList/MailCheck.R")
+
+source("DataPreparation/4.Anonymization.R")
+
+# Launch from here if you do not have access to raw data
+source("DataPreparation/5.Computations.R")
+
+source("DataPreparation/6.AdditComp.R")
+
+source("DataPreparation/7.PrepForRegLog.R")
+source("DataPreparation/8.DataPrep.R")
