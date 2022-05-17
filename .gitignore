@@ -10,6 +10,9 @@ Data/Pavlovia/J1
 Data/Pavlovia/J2
 Data/Pavlovia/Processed
 
+Output/Anonyme/
+Output/Model/
+
 Temp/
 # History files
 .Rhistory
