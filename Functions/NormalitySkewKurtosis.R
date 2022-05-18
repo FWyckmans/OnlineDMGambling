@@ -1,4 +1,10 @@
-NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large") {
+# VoI = FromColNameToIndex(d, c(AllCol$Demo, AllCol$Gamb, AllCol$Alc,
+#                               AllCol$Cog, AllCol$FR, AllCol$Perso,
+#                               AllCol$Computation, AllCol$ProbaM))
+# Groups = "Sample"
+# Format = "Long"
+# 
+NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large", CriticVal = 1.96) {
   # Give the dataframe, the index of the Variable of Interest and the index of the group column
   # Indicate if you want a between-subject comparison
   if (!(Format %in% c("Large", "Long"))){
@@ -40,7 +46,7 @@ NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large") {
     n = 1
     for (i in VoI){
       vect <- dt[[i]]
-      
+      # print(i)
       # Handle numeric
       if (!(is.character(vect) | is.factor(vect))){
         moy <- mean(vect, na.rm = T)
@@ -57,7 +63,7 @@ NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large") {
         dTemp[n,9] = round(spssSkewKurtosis(vect)[1],digits=5)
         dTemp[n,10] <- 'OK'
         dTemp[n,11] <- length(vect)
-        if ((dTemp[n,6] < -1.96 | dTemp[n,6] > 1.96) | (dTemp[n,7] < -1.96 | dTemp[n,7] > 1.96)){
+        if ((dTemp[n,6] < -CriticVal | dTemp[n,6] > CriticVal) | (dTemp[n,7] < -CriticVal | dTemp[n,7] > CriticVal)){
           dTemp[n,10] <- "Not_OK"
         }
         n = n+1
@@ -130,7 +136,7 @@ NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large") {
     dMedian <- dT%>%
       select(c(1, 2, 5))%>%
       spread(key = 2, value = 3)
-  
+    
     dDescr2 <- cbind(dMean, dSD[,c(2:3)], dN[,c(2:3)])
     colnames(dDescr2) <- c("Variable", paste0("Mean_", colnames(dDescr2)[2]), paste0("Mean_", colnames(dDescr2)[3]),
                            paste0("SD_", colnames(dDescr2)[4]), paste0("SD_", colnames(dDescr2)[5]),
@@ -279,7 +285,7 @@ NormalitySkewKurtosis <- function(d, VoI, Groups, Format = "Large") {
     
     # dDescr %>%
     #   slice(match(x, Variable))
-
+    
     return(dDescrLong)
   }
 }
