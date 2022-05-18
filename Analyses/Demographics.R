@@ -82,3 +82,10 @@ names(dDescr)[names(dDescr) == 'Gd'] <- nameG
 names(dDescr)[names(dDescr) == 'DemVar'] <- "Variables"
 
 write_xlsx(dDescr, "output/DescriptiveClinical.xlsx")
+
+for (i in c(DemVar, "Ind_CravingG", "Ind_CravingN", "dIndCraving")){
+  if (typeof(d[[i]]) == "integer"){
+    vect = d[[i]]
+    output = NormCheck(vect)
+    print(paste0(i, " ", output))}
+}
