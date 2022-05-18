@@ -22,7 +22,7 @@ TestDF <- function(nRow = 80){
       d[[i]] <- as.factor(d[[i]])
     }
   }
-  dDev <<- d
+  dTest <<- d
   
 }
 TestDF()
