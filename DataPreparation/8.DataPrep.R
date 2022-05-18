@@ -16,10 +16,6 @@ d <- d%>%
   filter(!NS %in% ToRem)%>%
   filter(TestQOK == 1)
 
-# ICJE NA to 0
-# d$ICJE[is.na(d$ICJE)] <- 0
-# d <- filter(d, !is.na(ICJE))
-
 # Threshold for gambling
 Threshold = 4
 d$Grp[d$ICJE >= Threshold] <- 'PG'
@@ -44,6 +40,10 @@ d$Grp3C[d$Grp3 == 'G'] <- 0
 sum(d$Grp3 == 'PG')
 sum(d$Grp3 == 'G')
 sum(d$Grp3 == 'HC')
+
+#Gambler No Gambler
+d$G_NGC <- -1
+d$G_NGC[is.na(d$ICJE)] <- 1
 
 ##### Age Correction
 for (i in c(1: length(d$NS))){
