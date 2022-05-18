@@ -5,10 +5,6 @@ source("DMG_Init.R")
 ##### Data
 d <- read.delim("Output/dFINAL.txt")
 
-# Demographic variables
-d <- AddDummyCol(d, "Smoker", "Yes")
-d$Smoker[is.na(d$Fager)] <- "No"
-
 DemVar = c("Age", "Gender", "StudyLvl",
            "ICJE", "AUDIT", "CAST", "Fager", "Smoker",
            "Auto", "Routine",

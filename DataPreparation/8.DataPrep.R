@@ -52,6 +52,10 @@ for (i in c(1: length(d$NS))){
   }
 }
 
+##### Add smoker column
+d <- AddDummyCol(d, "Smoker", "Yes")
+d$Smoker[is.na(d$Fager)] <- "No"
+
 ##### Feature engineering
 # MB-MF
 d$MBc_AfterGamb = d$w_AfterGamb*d$beta1_AfterGamb
