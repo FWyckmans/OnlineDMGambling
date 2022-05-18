@@ -100,6 +100,3 @@ names(dDescr)[names(dDescr) == 'Gd'] <- nameG
 names(dDescr)[names(dDescr) == 'DemVar'] <- "Variables"
 
 write_xlsx(dDescr, "output/DescriptiveClinical.xlsx")
-
-vect = dDem[dDem$Grp3 == "HC", "Age"]
-NormCheck(vect)
