@@ -73,7 +73,8 @@ MailToChange <- list("marouan.lahlafi@ulb.ac.be" = "marouan.lahlafi@ulb.be",
                      "julievetesse@icloud.com" = "julievetesse@icolud.com",
                      "azizniang@icloud.com" = "Azizniang@icloud.com",
                      "teamkebabs@icloud.com" = "teamkebabs@outlook.com",
-                     "litalynda@yahoo.com" = "litalynda@yahoo.com ")
+                     "litalynda@yahoo.com" = "litalynda@yahoo.com ",
+                     "remig0502.1@gmail.com" = "remi.gonda@student.galilee.be")
 
 
 ##### List of participant who gave two different ages for LS1 and LS2
